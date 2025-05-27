@@ -1,0 +1,1232 @@
+<style>
+    *,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        border: 0;
+    }
+
+    *,
+    :after,
+    :before {
+        box-sizing: border-box;
+    }
+
+    :active,
+    :focus,
+    a:active,
+    a:focus {
+        outline: 0;
+    }
+
+    aside,
+    footer,
+    header,
+    nav {
+        display: block;
+    }
+
+    .body-land {
+        background: url("{path}/img/bg.jpg") no-repeat top left /cover !important;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    @media (max-width: 670px) {
+        .body-land {
+            background: url('{path}/img/bg-mob.jpg') no-repeat top left /cover !important;
+        }
+    }
+
+    .body-land,
+    html {
+        font: 14px/1 Ubuntu, sans-serif;
+        height: 100%;
+        width: 100%;
+        -ms-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+    }
+
+    html {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    @keyframes spinner {
+        0% {
+            transform: rotate(-3deg);
+        }
+
+        50% {
+            transform: rotate(3deg);
+        }
+
+        100% {
+            transform: rotate(-3deg);
+        }
+    }
+
+    @keyframes antispinner {
+        0% {
+            transform: rotate(3deg);
+        }
+
+        50% {
+            transform: rotate(-3deg);
+        }
+
+        100% {
+            transform: rotate(3deg);
+        }
+    }
+
+    .body-land {
+        width: 100wv;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .try-counter {
+        color: #fff !important;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .embeded-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: relative;
+        z-index: 10;
+    }
+
+    .logo {
+        padding: 20px 0 0 0;
+        width: 100%;
+        max-width: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .main-embeded {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        z-index: 10;
+    }
+
+    .wheel {
+        width: 100%;
+        height: auto;
+        background: url('{path}/img/wheel-frame.png') no-repeat top left /contain;
+        aspect-ratio: 1 / 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wheel-body {
+        position: relative;
+        background: black;
+        width: 95%;
+        height: 95%;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #F2DD3A;
+        background: radial-gradient(circle, rgba(242, 221, 58, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    .wheel-text-wrapper {
+        width: 100%;
+        height: 100%;
+        padding-top: 5%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        p {
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        p:not(last-child) {
+            margin-bottom: 6px;
+        }
+    }
+
+    .wheel-text {
+        display: block;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .wheel-big-text {
+        margin: 0 0 6px 0 !important
+    }
+
+    .wheel-seg-img {
+        width: 45%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .wheel-seg {
+        padding-top: 10px;
+        height: 51%;
+        width: 33%;
+        position: absolute;
+        -webkit-clip-path: polygon(100% 0, 50% 100%, 0 0);
+        clip-path: polygon(100% 0, 50% 100%, 0 0);
+        translate: -50% 0;
+        transform-origin: bottom;
+        text-align: center;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        left: 50%;
+    }
+
+    .wheel-seg:nth-child(1) {
+        rotate: 0deg;
+        background-color: #820ab7;
+    }
+
+    .wheel-seg:nth-child(2) {
+        rotate: 36deg;
+        background-color: #ffdf14;
+    }
+
+    .wheel-seg:nth-child(3) {
+        rotate: 72deg;
+        background-color: #ff8521;
+    }
+
+    .wheel-seg:nth-child(4) {
+        rotate: 108deg;
+        background-color: #f82321;
+    }
+
+    .wheel-seg:nth-child(5) {
+        rotate: 144deg;
+        background-color: #7d29e7;
+    }
+
+    .wheel-seg:nth-child(6) {
+        rotate: 180deg;
+        background-color: #ff039f;
+    }
+
+    .wheel-seg:nth-child(7) {
+        rotate: 216deg;
+        background-color: #0046ef;
+    }
+
+    .wheel-seg:nth-child(8) {
+        rotate: 252deg;
+        background-color: #44deff;
+    }
+
+    .wheel-seg:nth-child(9) {
+        rotate: 288deg;
+        background-color: #00b453;
+    }
+
+    .wheel-seg:nth-child(10) {
+        rotate: 324deg;
+        background-color: #00858e;
+    }
+
+    .start-embeded-btn {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        animation: pulseAnimation90 1.5s ease-in-out infinite;
+        background: url('{path}/img/wheel-btn.png') no-repeat center/contain;
+        width: 25%;
+        height: 25%;
+        z-index: 10;
+    }
+
+    .frame {
+        position: absolute;
+        z-index: 5;
+        top: -1%;
+        left: 50%;
+        translate: -50% 0;
+        height: 50%;
+
+        .frame-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pointer {
+            position: absolute;
+            left: 50%;
+            top: -10%;
+            translate: -50% -0%;
+        }
+    }
+
+    .popup {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .4);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease;
+        opacity: 0;
+        pointer-events: none;
+        background: url('{path}/img/bg-modal.jpg') no-repeat center / cover;
+
+
+
+        .popup-body {
+            box-shadow: inset 0 -15px 6px 0 #b10051, inset 5px 10px 6px 0 hsla(0, 0%, 100%, .5);
+            border-radius: 36px;
+            background: radial-gradient(84.62% 82.32% at 27.14% 15.52%, hsla(0, 0%, 100%, .7) 0, hsla(0, 0%, 100%, 0) 69.79%, hsla(0, 0%, 100%, 0) 100%), linear-gradient(290deg, #e90061, #fc0778), linear-gradient(0deg, #530853 .01%, #820282 14.13%, #c30dc3 43.66%, #f0f 84.24%), linear-gradient(110deg, #ff54d9, #ea1692);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 550px;
+            min-width: 200px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-title {
+            font-size: 50px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .popup-text {
+            color: #fbe878;
+            font-size: 90px;
+            text-align: center;
+        }
+
+        .popup-second-text {
+            font-size: 50px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .popup-btn {
+            width: 100%;
+            color: #612901;
+            border-bottom:
+                    4px solid #7e5205;
+            background:
+                    rgb(224, 138, 13);
+            background:
+                    linear-gradient(180deg, rgb(224, 138, 13) 0%, rgb(255, 196, 70) 40%, rgb(255, 196, 70) 60%, rgb(224, 138, 13) 100%);
+            display: block;
+            border-radius:
+                    16px;
+            font-size: 25px;
+            padding:
+                    24px 33px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-left: auto;
+            margin-right: auto;
+            overflow:
+                    hidden;
+            position: relative;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    }
+
+    .active-popup {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .first-spin {
+        animation: 5s firstSpin ease;
+        animation-fill-mode: forwards;
+    }
+
+    .second-spin {
+        animation: 5s secondSpin ease;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes firstSpin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(1620deg);
+        }
+    }
+
+    @keyframes secondSpin {
+        from {
+            transform: rotate(1620deg);
+        }
+
+        to {
+            transform: rotate(3525deg);
+        }
+    }
+
+    @keyframes pulseAnimation90 {
+        0% {
+            -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1)
+        }
+
+        50% {
+            -webkit-transform: rotate(-90deg) scale(1.2);
+            transform: rotate(-90deg) scale(1.2)
+        }
+
+        to {
+            -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1)
+        }
+    }
+
+    @keyframes move {
+
+        0%,
+        to {
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        50% {
+            -webkit-transform: translateY(3vh);
+            transform: translateY(3vh)
+        }
+    }
+
+    @keyframes falling {
+        0% {
+            -webkit-transform: translateX(20px) rotate(0deg);
+            transform: translateX(20px) rotate(0deg);
+            opacity: 0;
+            top: -10%
+        }
+
+        10% {
+            opacity: 1
+        }
+
+        20% {
+            -webkit-transform: translateX(-20px) rotate(45deg);
+            transform: translateX(-20px) rotate(45deg)
+        }
+
+        40% {
+            -webkit-transform: translateX(20px) rotate(90deg);
+            transform: translateX(20px) rotate(90deg)
+        }
+
+        60% {
+            -webkit-transform: translateX(-20px) rotate(135deg);
+            transform: translateX(-20px) rotate(135deg)
+        }
+
+        80% {
+            -webkit-transform: translateX(20px) rotate(180deg);
+            transform: translateX(20px) rotate(180deg)
+        }
+
+        to {
+            -webkit-transform: translateX(-20px) rotate(225deg);
+            transform: translateX(-20px) rotate(225deg);
+            top: 110%
+        }
+    }
+
+    #banner .paragraph,
+    #banner p {
+        color: unset !important;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .footer::after {
+        display: none;
+    }
+
+    .header::after {
+        display: none;
+    }
+
+    #weebly-footer-signup-container-v3 {
+        visibility: unset !important;
+        display: none !important;
+        height: unset !important;
+        position: unset !important;
+        bottom: 0px !important;
+        left: 0px;
+        right: 0px !important;
+        width: 100% !important;
+        z-index: -1 !important;
+        opacity: 0 !important;
+    }
+
+    #panel-one {
+        height: 0px !important;
+    }
+
+    #panel-two {
+        height: 100vh;
+        margin-left: 0 !important;
+
+        #banner {
+            height: 100%;
+        }
+    }
+
+    #wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 0 !important;
+    }
+
+    .popup-text {
+        margin: 4px 0 4px 0;
+    }
+
+    .offer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 7vh;
+        margin-bottom: 5vh;
+        position: relative;
+        z-index: 10;
+
+        h1 {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 50px;
+                text-align: center;
+                text-transform: uppercase;
+                margin-bottom: 4px;
+                color: #5200bc;
+            }
+
+            span:nth-child(1) {
+                font-size: 35px;
+                width: fit-content;
+            }
+
+            span:nth-child(3) {
+                font-size: 40px;
+            }
+        }
+    }
+
+    .decor {
+        .decor-baloons {
+            position: absolute;
+            top: -3vh;
+            z-index: 1;
+            animation: move 5s ease-in-out infinite;
+            width: 58.7vh;
+
+            .baloons-desctop-img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .baloons-mobile-img {
+                display: none;
+            }
+        }
+
+        .decor-girl {
+            position: absolute;
+            z-index: 1;
+            bottom: -50px;
+            right: 0;
+        }
+
+        .decor-items__item {
+            position: absolute;
+        }
+
+        .decor-items__coin-1 {
+            -webkit-animation: falling 25s ease-in-out infinite;
+            animation: falling 25s ease-in-out infinite;
+            animation-delay: 0s;
+            -webkit-animation-delay: -1s;
+            animation-delay: -1s;
+            top: -50vh;
+            left: 18.61vh;
+            width: 13.8vh;
+        }
+
+        .decor-items__coin-2 {
+            -webkit-animation: falling 25s ease-in-out infinite;
+            animation: falling 25s ease-in-out infinite;
+            animation-delay: 0s;
+            -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+            top: -50vh;
+            left: 40vh;
+            width: 12.31vh;
+        }
+
+        .decor-items__coin-3 {
+            -webkit-animation: falling 25s ease-in-out infinite;
+            animation: falling 25s ease-in-out infinite;
+            animation-delay: 0s;
+            -webkit-animation-delay: 7s;
+            animation-delay: 7s;
+            top: -50vh;
+            left: 51.11vh;
+            width: 7.69vh;
+        }
+
+        .decor-items__coin-4 {
+            -webkit-animation: falling 25s ease-in-out infinite;
+            animation: falling 25s ease-in-out infinite;
+            animation-delay: 0s;
+            right: 55vh;
+            -webkit-animation-delay: 18s;
+            animation-delay: 18s;
+            top: -50vh;
+            width: 6.76vh;
+        }
+
+        .decor-items__coin-5 {
+            -webkit-animation: falling 25s ease-in-out infinite;
+            animation: falling 25s ease-in-out infinite;
+            animation-delay: 0s;
+            right: 30vh;
+            -webkit-animation-delay: 12s;
+            animation-delay: 12s;
+            top: -50vh;
+            width: 7.78vh;
+        }
+    }
+
+    .animate {
+        animation: 2s spinner ease-in-out infinite;
+    }
+
+    .comp-title {
+        margin-bottom: 20px;
+
+        .comp-title__first {
+            font-size: 35px;
+            color: #fbe878;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .comp-title__second {
+            font-size: 25px;
+            color: #fff;
+            text-align: center;
+        }
+    }
+
+    .form-popup {
+        .popup-body {
+            max-width: 400px;
+        }
+    }
+
+    .form-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 25px;
+        min-width: 90%;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            font-size: 18px;
+            padding: 0 15px;
+        }
+
+        a.form-tab-btn::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #fbe878;
+            bottom: -8px;
+            left: 0;
+            opacity: 0;
+            transition: .2s ease;
+        }
+
+        a.form-tab-btn.active-form::after {
+            opacity: 1;
+        }
+    }
+
+    .form-container {
+        min-width: 90%;
+    }
+
+    .form {
+        width: 100%;
+    }
+
+    .form-hint {
+        color: #fff;
+        text-align-last: left;
+        font-size: 16px;
+    }
+
+    .form-input {
+        margin-top: 15px;
+        padding: 4px 16px;
+        border-radius: 6px;
+        width: 100%;
+        display: block;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .submit-btn {
+        height: 50px;
+        padding: calc(11.4px + .1875vw) 8px;
+        font-size: calc(15.6px + .125vw);
+        border: 1px solid #fff;
+        color: #000;
+        text-transform: inherit;
+        letter-spacing: 1px;
+        margin: 20px auto;
+        box-shadow: inset 0 1.13px 1.695px 0 rgba(60, 0, 0, .25), 0 4px 4px 0 rgba(0, 0, 0, .25), inset 1px 1px 1px 0 hsla(0, 0%, 100%, .5);
+        border-radius: 8px;
+        background: radial-gradient(227.54% 100% at 0 0, hsla(0, 0%, 100%, .7) 0, hsla(0, 0%, 100%, 0) 69.79%, hsla(0, 0%, 100%, 0) 100%), #ffb9d8;
+        width: 100%;
+        font-family: Roboto-Regular, sans-serif;
+        cursor: pointer;
+
+    }
+
+    .checkbox__item {
+        margin-bottom: calc(7.6px + .125vw);
+        text-align: left;
+        -webkit-align-items: center;
+        align-items: center;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .checkbox__input {
+        display: none;
+    }
+
+    .checkbox__label {
+        height: 20px;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        margin-right: 10px;
+        position: relative;
+        border-radius: 2px;
+        background: #00cfa6;
+        cursor: pointer;
+        width: 20px;
+    }
+
+    .checkbox__input:checked+.checkbox__label .checkbox__label-icon {
+        background: #00cfa6 url('{path}/img/checkbox.svg') no-repeat 50%;
+        display: flex;
+    }
+
+    .checkbox__label,
+    .checkbox__text {
+        -webkit-align-items: center;
+        align-items: center;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .checkbox__text-link {
+        font-size: 14px;
+        text-decoration: underline;
+        color: #fbe878;
+        -webkit-align-items: center;
+        align-items: center;
+        margin-left: 5px;
+        font-family: Roboto-Regular, sans-serif;
+    }
+
+    .form.hidden {
+        display: none;
+    }
+
+    @media (max-height: 1440px) and (max-width: 3440px) {
+        .wheel {
+            max-width: 700px;
+        }
+    }
+
+    @media (max-height: 900px) and (max-width: 1700px) {
+        .wheel {
+            max-width: 500px;
+        }
+    }
+
+    @media (max-height: 680px) {
+        .wheel {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-height: 580px) {
+        .body-land {
+            height: 580px !important;
+        }
+
+        .wheel {
+            max-width: 350px;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+    }
+
+    @media (max-height: 480px) {
+        .wheel {
+            max-width: 350px;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .offer {
+            margin-top: 2vh;
+            margin-bottom: 3vh;
+
+            h1 {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    padding: 8px 16px;
+                    border-radius: 50px;
+                }
+
+                span:nth-child(1) {
+                    font-size: 25px;
+                    width: fit-content;
+                }
+
+                span:nth-child(3) {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .logo {
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width: 1080px) {
+        .decor-girl {
+            max-width: 50%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .decor-baloons {
+            max-width: 50%;
+
+        }
+    }
+
+    @media (max-width: 676px) {
+        .frame {
+            & .pointer {
+                width: 25%;
+            }
+        }
+    }
+</style>
+<div class="decor">
+    <div class="decor-baloons">
+        <img class="baloons-desctop-img" src="{path}/img/decor/decor_item_1.png" alt="">
+        <img class="baloons-mobile-img" src="{path}/img/decor/decor_item_1_mb.png" alt="">
+    </div>
+    <div class="decor-girl">
+        <img src="{path}/img/decor/girl_left.png" alt="">
+    </div>
+
+    <img class="decor-items__coin-1 decor-items__item" src="{path}/img/decor/coin_1.png">
+    <img class="decor-items__coin-2 decor-items__item" src="{path}/img/decor/coin_2.png">
+    <img class="decor-items__coin-3 decor-items__item" src="{path}/img/decor/coin_3.png">
+    <img class="decor-items__coin-4 decor-items__item" src="{path}/img/decor/coin_4.png">
+    <img class="decor-items__coin-5 decor-items__item" src="{path}/img/decor/coin_5.png">
+</div>
+
+<section class="body-land">
+
+    <header class="embeded-header">
+
+        <div class="logo">
+            <img src="{path}/img/logo_pinco.svg" alt="">
+            <img src="{path}/img/logo-2.png" alt="">
+        </div>
+
+    </header>
+    <section class="offer">
+        <h1>
+            <span>Бонусы ждут -</span>
+            <br>
+            <span>Крути и выигрывай!</span>
+        </h1>
+        <p class="try-counter">отсталось попыток: <span id="counter">2</span></p>
+    </section>
+    <div class="main-embeded">
+        <div class="wheel">
+            <div class="wheel-body animate">
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-big-text wheel-text">100</p>
+                        <p class="wheel-small-text wheel-text">
+                            free spins</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-big-text wheel-text" style="color: #820ab7!important;">50&nbsp; </p>
+                        <p class="wheel-small-text wheel-text" style="color: #820ab7!important;">
+                            free spins</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-small-text wheel-text">Бонус</p>
+                        <p class="wheel-big-text wheel-text">500&nbsp;000&nbsp;&#8381;</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-small-text wheel-text">попробуйте<br> еще</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <img class="wheel-seg-img" src="{path}/img/pinco-in-segment.png" alt="">
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-big-text wheel-text">250</p>
+                        <p class="wheel-small-text wheel-text">
+                            free spins</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-small-text wheel-text">Бонус</p>
+                        <p class="wheel-big-text wheel-text">100&nbsp;000&nbsp;&#8381;</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-small-text wheel-text">Бонус</p>
+                        <p class="wheel-big-text wheel-text">250&nbsp;000&nbsp;&#8381;</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <p class="wheel-small-text wheel-text">попробуйте<br> еще</p>
+                    </div>
+                </div>
+                <div class="wheel-seg">
+                    <div class="wheel-text-wrapper adopt">
+                        <img class="wheel-seg-img" src="{path}/img/pinco-in-segment.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <button class="start start-embeded-btn">
+            </button>
+            <div class="frame">
+                <img class="pointer" src="{path}/img/wheel-top.png" alt="">
+                <img class="frame-img" src="{path}/img/wheel-pointer.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="first-popup" class="popup">
+        <div class="popup-body">
+            <p class="popup-text">250</p>
+            <p class="popup-second-text">фриспинов</p>
+        </div>
+    </div>
+    <div id="second-popup" class="popup">
+        <div class="popup-body">
+            <p class="popup-second-text">Бонус</p>
+            <p class="popup-text">250FS + 500&nbsp;000&nbsp;&#8381;</p>
+            <p class="popup-second-text">на первый депозит!</p>
+
+            <a href="{offer}">Offer</a>
+        </div>
+    </div>
+    <div id="thx-popup" class="popup">
+        <div class="popup-body">
+            <p class="popup-second-text">Спасибо!</p>
+            <p class="popup-second-text">На указанный телефон или E-mail был отправлен супер-мега бонус!</p>
+        </div>
+    </div>
+
+    <div id="form-popup" class="popup form-popup">
+        <div class="popup-body">
+            <div class="comp-title">
+                <p class="comp-title__first">500 000 ₽ + 250fs</p>
+                <p class="comp-title__second">на первый депозит!</p>
+            </div>
+
+            <div class="form-tabs">
+                <a href="#" id="tel" class="form-tab-btn active-form">По телефону</a>
+                <a href="#" id="email" class="form-tab-btn">По e-mail</a>
+            </div>
+
+            <div class="form-container">
+
+                <form class="form" id="tel-form" action="/reg.php" method="post">
+                    <p class="form-hint">Введите номер телефона</p>
+
+                    <input class="form-input" type="tel" id="phone" value="+7 " name="phone">
+
+                    </input>
+
+                    <button class="submit-btn" type="submit">
+                        Зарегистрироваться
+                    </button>
+                </form>
+
+                <form method="post" class="form hidden" id="mail-form" action="/reg.php">
+
+                    <input class="form-input" type="email" id="email" placeholder="E-mail" name="email">
+                    </input>
+
+                    <button class="submit-btn" type="submit">
+                        Зарегистрироваться
+                    </button>
+                </form>
+
+                <div class="checkbox__item checkbox__item_rules">
+                    <input class="checkbox__input" type="checkbox" id="check-rules-p" checked>
+                    <label class="checkbox__label" for="check-rules-p">
+                        <span class="checkbox__label-icon"></span>
+                    </label>
+                    <div class="checkbox__text">
+                        <span>Я согласен </span>
+                        <a class="checkbox__text-link redirectlinkTerms" href="#">с правилами и условиями</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    const startBtn = document.querySelector('.start');
+    const wheelBody = document.querySelector('.wheel-body');
+    const firstPopup = document.querySelector('#first-popup');
+    const secondPopup = document.querySelector('#second-popup');
+    const formPopup = document.querySelector('#form-popup');
+    const thxPopup = document.querySelector('#thx-popup');
+    const secsp = document.querySelector('#secsp');
+    const counter = document.querySelector('#counter');
+    const textsTop = document.querySelectorAll('.adopt-top');
+    const textsBot = document.querySelectorAll('.adopt-bot');
+    const textsBlock = document.querySelectorAll('.adopt');
+    const telButton = document.querySelector('#tel');
+    const emailButton = document.querySelector('#email');
+    const mailForm = document.querySelector('#mail-form');
+    const telForm = document.querySelector('#tel-form');
+
+    textsBlock.forEach((el) => {
+        adjustFontSizeToFit(el, 0.35);
+    });
+
+    startBtn.addEventListener('click', function () {
+        console.log('click');
+        wheelBody.classList.remove('animate');
+        wheelBody.classList.add('first-spin');
+        counter.innerHTML = '1';
+
+        setTimeout(function () {
+            firstPopup.classList.add('active-popup');
+        }, 6000);
+
+        setTimeout(() => {
+            firstPopup.classList.remove('active-popup');
+            wheelBody.classList.add('second-spin');
+            counter.innerHTML = '0';
+
+            setTimeout(function () {
+                formPopup.classList.add('active-popup');
+
+            }, 6000);
+        }, 8000);
+    });
+
+    function showForm() {
+        alert('form')
+    }
+
+    function adjustFontSizeToFit(element, c) {
+        const paragraphs = element.querySelectorAll('p');
+
+        paragraphs.forEach(p => {
+            let fontSize = parseFloat(window.getComputedStyle(p).fontSize);
+            const targetWidth = element.offsetWidth * c; // коэффициент увел
+            console.log(targetWidth);
+
+            while (p.offsetWidth < targetWidth && fontSize < 100) {
+                fontSize += 1;
+                p.style.fontSize = `${fontSize}px`;
+
+                if (p.offsetWidth >= targetWidth) {
+                    break;
+                }
+            }
+
+            if (p.offsetWidth > targetWidth) {
+                fontSize -= 1;
+                p.style.fontSize = `${fontSize}px`;
+            }
+        });
+    }
+
+    const input = document.getElementById('phone');
+    input.addEventListener('keydown', (e) => {
+        if ((input.selectionStart <= 3) && (e.key === 'Backspace' || e.key === 'Delete')) {
+            e.preventDefault();
+        }
+    });
+    input.addEventListener('input', () => {
+        const prefix = '+7 ';
+        let value = input.value;
+        if (!value.startsWith(prefix)) {
+            value = prefix + value.replace(/[^0-9]/g, '');
+        }
+        let numbersOnly = value.slice(prefix.length).replace(/\D/g, '');
+        numbersOnly = numbersOnly.slice(0, 10);
+        input.value = prefix + numbersOnly;
+    });
+
+    if (telButton && emailButton && mailForm && telForm) {
+        telButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleForms('tel');
+        });
+
+        emailButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleForms('email');
+        });
+
+        function toggleForms(mode) {
+            const isTel = mode === 'tel';
+            telForm.classList.toggle('hidden', !isTel);
+            mailForm.classList.toggle('hidden', isTel);
+            telButton.classList.toggle('active-form', isTel);
+            emailButton.classList.toggle('active-form', !isTel);
+        }
+    }
+
+    function sendFormAjax(formId) {
+        const form = document.querySelector(formId);
+
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    thxPopup.classList.add('active-popup');
+                    formPopup.classList.remove('active-popup');
+
+
+                })
+                .catch(error => {
+                    console.error('Ошибка отправки формы:', error);
+                });
+        });
+    }
+
+    sendFormAjax('#tel-form');
+    sendFormAjax('#mail-form');
+</script>
